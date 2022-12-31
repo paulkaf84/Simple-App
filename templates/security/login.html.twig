@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+
+{% block body %}
+    <div class="flex justify-center mt-[20vh]">
+        <form method="post" class="rounded-xl border-gray-50 border-2 p-10">
+
+            <h1 class="text-3xl -mt-5 mb-5">Please sign in</h1>
+            {% if error %}
+                <div class="rounded-xl w-full p-1 mb-5 text-sm border-2 border-red-700 text-red-700 bg-red-50">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="rounded-xl w-full p-1 mb-5 text-sm border-2 border-green-700 text-green-700 bg-green-50">
+                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
+            <label for="inputEmail" class="block after:content-['*'] after:text-red-700 font-semibold mb-0.5">Email </label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="text-sm text-gray-700 bg-gray-50 focus:bg-white transition duration-1000 focus:outline-cyan-600 rounded-md mb-2 p-1 border-gray-50 border-2" autocomplete="email" required autofocus>
+
+            <label for="inputPassword" class="block after:content-['*'] after:text-red-700 font-semibold mb-0.5">Password </label>
+            <input type="password" name="password" id="inputPassword" class="text-sm text-gray-700 bg-gray-50 focus:bg-white transition duration-1000 focus:outline-cyan-600 rounded-md mb-2 p-1 border-gray-50 border-2" autocomplete="current-password" required>
+            <br>
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+            #}
+
+            <button class="rounded-xl bg-cyan-700 hover:bg-cyan-600 w-full p-1 mt-2 text-center text-white font-semibold transition duration-1000" type="submit">
+                Sign in
+            </button>
+        </form>
+    </div>
+
+{% endblock %}
