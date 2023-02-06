@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:/wamp64/www/l3_si/18-01-2023/TAD/.idea/TAD.iml" filepath="C:/wamp64/www/l3_si/18-01-2023/TAD/.idea/TAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/first6-2.iml" filepath="$PROJECT_DIR$/.idea/first6-2.iml" />
     </modules>
   </component>

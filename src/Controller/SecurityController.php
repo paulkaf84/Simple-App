@@ -31,7 +31,9 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path: '/admin', name: 'admin')]
-    public function admin(){
-
+    public function admin(): Response
+    {
+//        return $this->render('admin/index.html.twig');
+        return new Response("admin");
     }
 }
